@@ -9,7 +9,7 @@ let bullet = document.querySelectorAll(".bullets span");
 //select Elements
 let quesIndex = 0;
 let rightAnswer = 0;
-fetch("/quiz.json")
+fetch("quiz.json")
   .then((data) => {
     let result = data.json();
     return result;
