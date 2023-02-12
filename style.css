@@ -31,17 +31,12 @@ body {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  gap: 20px;
 }
-.counter .count{
-  display: flex;
-  align-items: center;
-}
-.counter .cat
+.time
 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
 }
 .question {
   font-size: 20px;
