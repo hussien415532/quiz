@@ -19,7 +19,7 @@ fetch("quiz.json")
     let qCount = data.length;
     setQuestionCountAndBulleets(qCount);
     setDataToContainer(quesIndex, data);
-    countdown(30, qCount);
+    countdown(15, qCount);
     submit.onclick = function () {
       if (quesIndex < qCount) {
         let rAnswer = data[quesIndex]["right_answer"];
@@ -40,7 +40,7 @@ fetch("quiz.json")
         question.innerHTML = "";
         setDataToContainer(++quesIndex, data);
         clearInterval(interval);
-        countdown(30, qCount);
+        countdown(15, qCount);
       }
       if (qCount == quesIndex) {
         //(rightAnswer>1)?questions:question
