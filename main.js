@@ -5,11 +5,12 @@ let question = document.querySelector(".question");
 let answers = document.querySelector(".answers");
 let submit = document.querySelector(".submit");
 let bullet = document.querySelectorAll(".bullets span");
+let time = document.querySelector(".time");
 
 //select Elements
 let quesIndex = 0;
 let rightAnswer = 0;
-fetch("quiz.json")
+fetch("/quiz.json")
   .then((data) => {
     let result = data.json();
     return result;
@@ -18,6 +19,7 @@ fetch("quiz.json")
     let qCount = data.length;
     setQuestionCountAndBulleets(qCount);
     setDataToContainer(quesIndex, data);
+    countdown(30, qCount);
     submit.onclick = function () {
       if (quesIndex < qCount) {
         let rAnswer = data[quesIndex]["right_answer"];
@@ -37,6 +39,8 @@ fetch("quiz.json")
         answers.innerHTML = "";
         question.innerHTML = "";
         setDataToContainer(++quesIndex, data);
+        clearInterval(interval);
+        countdown(30, qCount);
       }
       if (qCount == quesIndex) {
         //(rightAnswer>1)?questions:question
@@ -105,5 +109,25 @@ function checkAnswer() {
   }
   if (rAnswer == chosenAnswer) {
     rightAnswer++;
+  }
+}
+let interval;
+function countdown(durationInSeconds, quesNum) {
+  if (quesIndex < quesNum) {
+    let minutes;
+    let second;
+    interval = setInterval(() => {
+      minutes = Math.trunc(durationInSeconds / 60);
+      second = durationInSeconds % 60;
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      second = second < 10 ? `0${second}` : second;
+      time.innerHTML = `${minutes}:${second}`;
+      durationInSeconds--;
+
+      if (durationInSeconds < 0) {
+        clearInterval(interval);
+        submit.click();
+      }
+    }, 1000);
   }
 }
