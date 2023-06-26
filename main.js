@@ -44,9 +44,8 @@ fetch("quiz.json")
       }
       if (qCount == quesIndex) {
         //(rightAnswer>1)?questions:question
-        answers.innerHTML = `You have answered ${rightAnswer} ${
-          rightAnswer > 1 ? "questions" : "question"
-        } from ${qCount}`;
+        answers.innerHTML = `You have answered ${rightAnswer} ${rightAnswer > 1 ? "questions" : "question"
+          } from ${qCount}`;
         answers.style.fontSize = "20px";
         answers.style.fontWeight = "600";
         answers.style.padding = "30px";
